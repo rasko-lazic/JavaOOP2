@@ -5,6 +5,7 @@ public abstract class Cake {
     private Ingredient[] ingredients;
 
     public Cake(Ingredient[] i) {
+
         ingredients = i;
     }
 
