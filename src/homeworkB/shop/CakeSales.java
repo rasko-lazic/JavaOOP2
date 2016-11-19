@@ -25,6 +25,7 @@ public class CakeSales extends Thread{
         while(System.currentTimeMillis() < end) {
             for(int i = 0; i < 3; i++) {
                 Cake cakeForSale = takeFromStorage(productionStorage);
+
                 saleStorage.add(cakeForSale);
             }
 
@@ -40,8 +41,13 @@ public class CakeSales extends Thread{
     }
 
     public Cake takeFromStorage(ArrayList<Cake> storage) {
-        Cake cake = storage.get(storage.size() - 1);
-        storage.remove(storage.size() - 1);
+        int index = storage.size();
+        Cake cake;
+        do {
+            index--;
+            cake = storage.get(index);
+        } while (saleStorage.contains(cake));
+        storage.remove(index);
 
         return cake;
     }
