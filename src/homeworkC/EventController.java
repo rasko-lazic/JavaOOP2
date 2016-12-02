@@ -32,11 +32,18 @@ public class EventController extends Thread {
     }
 
     public void run() {
+        int counter = 0;
         while( ! this.isEmpty()) {
             System.out.println("Five minutes has passed.");
+            counter++;
 
             for(Event e : eventList) {
                 e.timeHasPassed(5);
+
+                if(counter % 3 == 0 && e.important) {
+                    e.addTime(3);
+                    System.out.println("Time has been added to important event " + e.getTitle());
+                }
             }
 
             this.removeExpired();
