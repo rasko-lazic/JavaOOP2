@@ -14,6 +14,10 @@ public class Song implements Serializable{
         duration = d;
     }
 
+    public int getDuration() {
+        return duration;
+    }
+
     public String toString() {
         return artist + " - " + title + " [" + duration + "]";
     }

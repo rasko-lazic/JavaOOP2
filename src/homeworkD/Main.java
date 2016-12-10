@@ -21,7 +21,7 @@ public class Main {
         Compilation comp = new Compilation(length);
 
         while(! input.equals("X")) {
-            System.out.println("A - add song; D - delete song; S - save compilation; R - show compilation;");
+            System.out.println("A - add song; D - delete song; S - save compilation; R - show compilation; X - exit");
 
 
             input = buffer.readLine();
@@ -60,6 +60,7 @@ public class Main {
 
                 case "X":
                     System.out.println("Compilation creator is closed.");
+                    break;
 
                 default:
                     System.out.println("Please select on of the available options.");

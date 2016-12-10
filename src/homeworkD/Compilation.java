@@ -5,11 +5,12 @@ import java.io.*;
 public class Compilation implements Serializable {
 
     private Song[] songList;
+    private transient int totalDuration;
 
     public Compilation(int l) {
         songList = new Song[l];
 
-        this.saveCompilation();
+//        this.saveCompilation();
     }
 
     public Song[] getSongList() {
@@ -20,6 +21,7 @@ public class Compilation implements Serializable {
         for(int i = 0; i < songList.length; i++) {
             if(songList[i] == null) {
                 songList[i] = s;
+                totalDuration += s.getDuration();
                 return true;
             }
         }
@@ -28,6 +30,7 @@ public class Compilation implements Serializable {
     }
 
     public void removeSong(int i) {
+        totalDuration -= songList[i].getDuration();
         songList[i] = null;
     }
 
@@ -61,10 +64,15 @@ public class Compilation implements Serializable {
             return;
         }
 
+        totalDuration = 0;
+
         for(int i = 0; i < compilation.getSongList().length; i++) {
             if(compilation.getSongList()[i] != null) {
                 System.out.println(compilation.getSongList()[i]);
+                totalDuration += compilation.getSongList()[i].getDuration();
             }
         }
+
+        System.out.println("Total duration: " + totalDuration);
     }
 }
