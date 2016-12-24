@@ -24,6 +24,10 @@ public class Server {
             ObjectOutputStream out = new ObjectOutputStream(socketConnection.getOutputStream());
             out.writeObject(productList);
 
+            while(true) {
+
+            }
+
             out.close();
             socketConnection.close();
             portListener.close();
