@@ -1,10 +1,12 @@
-package homeworkE;
+package exerciseG;
 
-import homeworkE.graphics.AppWindow;
+import exerciseG.graphic.AppWindow;
 
-public class  Main {
+public class Main {
 
     public static void main() {
+
         AppWindow app = new AppWindow();
     }
+
 }
