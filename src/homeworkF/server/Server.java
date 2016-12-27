@@ -1,6 +1,7 @@
 package homeworkF.server;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -25,13 +26,28 @@ public class Server {
             out.writeObject(productList);
 
             while(true) {
+                ObjectInputStream in = new ObjectInputStream(socketConnection.getInputStream());
+                String product = (String) in.readObject();
 
+                for(Product p : productList) {
+                    if(p.getName().equals(product)) {
+                        if(p.getAmount() > 0) {
+                            p.decrementAmount();
+                            out.reset();
+                            out.writeObject(productList);
+                        } else {
+                            out.writeObject("Out of stock.");
+                        }
+                    }
+                }
             }
 
-            out.close();
-            socketConnection.close();
-            portListener.close();
+//            out.close();
+//            socketConnection.close();
+//            portListener.close();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 

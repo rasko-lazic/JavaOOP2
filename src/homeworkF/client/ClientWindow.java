@@ -5,6 +5,7 @@ import homeworkF.server.Product;
 import javax.swing.*;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class ClientWindow extends JFrame{
@@ -12,6 +13,7 @@ public class ClientWindow extends JFrame{
     private JTextArea productDisplay;
     private JTextField inputField;
     private JButton orderButton;
+    private ObjectInputStream in;
 
     public ClientWindow(Socket s) {
         socket = s;
@@ -19,6 +21,12 @@ public class ClientWindow extends JFrame{
         this.setTitle("Order app");
         this.setLayout(null);
         this.setSize(300,250);
+
+        try {
+            in = new ObjectInputStream(socket.getInputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         this.initElements();
         this.initConnection();
@@ -41,13 +49,13 @@ public class ClientWindow extends JFrame{
         orderButton.setBounds(0, 150, 300, 20);
         this.add(orderButton);
 
-        orderButton.addActionListener(new OrderPlaced());
+        orderButton.addActionListener(new OrderPlaced(socket, inputField, productDisplay, in));
     }
 
     public void initConnection() {
         try {
-            ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
             Object serverResponse = in.readObject();
+//            in.close();
 
             productDisplay.setText(serverResponse.toString().replaceAll("\\[|]", "").replaceAll(", ","\n"));
         } catch (IOException | ClassNotFoundException e) {

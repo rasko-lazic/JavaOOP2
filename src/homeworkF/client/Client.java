@@ -15,7 +15,7 @@ public class Client {
 
             ClientWindow app = new ClientWindow(clientSocket);
 
-            clientSocket.close();
+//            clientSocket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

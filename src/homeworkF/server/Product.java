@@ -14,6 +14,22 @@ public class Product implements Serializable{
         amount = a;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void decrementAmount() {
+        amount--;
+    }
+
     public String toString() {
         return "Product: " + name + " [price: " + price + "] [amount: " + amount + "]";
     }
