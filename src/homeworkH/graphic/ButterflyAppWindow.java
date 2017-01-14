@@ -2,24 +2,28 @@ package homeworkH.graphic;
 
 import homeworkH.app.ButterflyParser;
 import homeworkH.events.ButteflyLabelClick;
+import homeworkH.events.NextButterfly;
+import homeworkH.events.PrevButterfly;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class ButterflyAppWindow extends JFrame {
-    private static final String[] BUTTERFLY_LIST = {"adonis-blue", "duke-of-burgundy", "gatekeeper", "marbled-white",
+    public static final String[] BUTTERFLY_LIST = {"adonis-blue", "duke-of-burgundy", "gatekeeper", "marbled-white",
             "scotch-argus", "white-admiral"};
     private static final String PATH = "src/homeworkH/assets/";
     private ButterflyIcon[] butterflyLabels = new ButterflyIcon[BUTTERFLY_LIST.length];
     private ButterflyIcon mainButterflyLabel;
     private JLabel mainButterflyTitle;
     private JTextArea mainButterflyCaption;
+    private JButton nextButterfly;
+    private JButton prevButterfly;
     private ButterflyParser parser = new ButterflyParser();
 
     public ButterflyAppWindow() {
         this.setTitle("Butterfly Encyclopedia");
         this.setLayout(null);
-        this.setSize(400, 600);
+        this.setSize(400, 700);
 
         this.initIcons();
         this.initMain();
@@ -61,11 +65,26 @@ public class ButterflyAppWindow extends JFrame {
         mainButterflyCaption.setEditable(false);
         mainButterflyCaption.setFocusable(false);
         this.add(mainButterflyCaption);
+
+        nextButterfly = new JButton("Next");
+        nextButterfly.setBounds(350, 650, 100, 40);
+        this.add(nextButterfly);
+
+        prevButterfly = new JButton("Prev");
+        prevButterfly.setBounds(150, 650, 100, 40);
+        this.add(prevButterfly);
+
+        nextButterfly.addActionListener(new NextButterfly(this));
+        prevButterfly.addActionListener(new PrevButterfly(this));
     }
 
     public void setButterfly(String butterflyName) {
         mainButterflyLabel.setImage(new ImageIcon(PATH + butterflyName + ".jpg"));
         mainButterflyTitle.setText(parser.parseTitle(butterflyName));
         mainButterflyCaption.setText(parser.parseCaption(butterflyName));
+    }
+
+    public String getTitle() {
+        return mainButterflyTitle.getText();
     }
 }
