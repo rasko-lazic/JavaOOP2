@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLEncoder;
 
 public class CitySelect implements ActionListener{
     private JComboBox countryCombo;
@@ -28,7 +29,8 @@ public class CitySelect implements ActionListener{
         String countryCode = country.split(",")[1];
 
         City city = (City) cityCombo.getSelectedItem();
-        String urlString = "http://api.openweathermap.org/data/2.5/weather?q=" + city.getName() + "," + countryCode + "@&appid=62d8b162423b1d767e1641b71a56b4b7";
+
+        String urlString = "http://api.openweathermap.org/data/2.5/weather?q=" + URLEncoder.encode(city.getName()) + "," + countryCode + "@&appid=62d8b162423b1d767e1641b71a56b4b7";
 
         try {
             URL url = new URL(urlString);
@@ -37,7 +39,7 @@ public class CitySelect implements ActionListener{
 
             String inputLine;
             while ((inputLine = br.readLine()) != null) {
-                response.append(inputLine);
+                response.setText(inputLine);
             }
             br.close();
         } catch (IOException e1) {
