@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="homeworkI.controller.AppController">
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="783.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/noon.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" text="Log of login attempts" textFill="#b55959">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Inconsolata" size="30.0" />
+               </font></Label>
+         </children>
+      </HBox>
+      <TableView fx:id="logTable" prefHeight="200.0" prefWidth="552.0">
+        <columns>
+          <TableColumn fx:id="usernameCol" prefWidth="161.0" text="Username" />
+          <TableColumn fx:id="statusCol" prefWidth="189.0" text="Status" />
+            <TableColumn fx:id="timeCol" prefWidth="201.0" text="Time" />
+        </columns>
+      </TableView>
+   </children>
+</FlowPane>
