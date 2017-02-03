@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<FlowPane alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="homeworkI.controller.LoginController">
+<FlowPane alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="homeworkI.controller.LoginController">
    <children>
       <VBox alignment="CENTER_LEFT" prefHeight="315.0" prefWidth="152.0">
          <children>
@@ -19,7 +19,7 @@
                <image>
                   <Image url="@../resources/noon.png" />
                </image></ImageView>
-            <Label alignment="TOP_CENTER" prefHeight="20.0" prefWidth="66.0" text="Username">
+            <Label alignment="TOP_LEFT" prefHeight="20.0" prefWidth="121.0" text="Username">
                <font>
                   <Font size="14.0" />
                </font>
@@ -31,7 +31,7 @@
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin></TextField>
-            <Label text="Password">
+            <Label prefHeight="18.0" prefWidth="104.0" text="Password">
                <font>
                   <Font size="14.0" />
                </font>

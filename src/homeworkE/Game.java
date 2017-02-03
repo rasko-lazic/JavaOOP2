@@ -53,7 +53,7 @@ public class Game extends Thread {
                 this.pickButtons(5);
             }
 
-            int sleepTime = rnd.nextInt(700) + 800;
+            int sleepTime = rnd.nextInt(700) + 1000;
 
             try {
                 Thread.sleep(sleepTime);

@@ -5,8 +5,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sun.rmi.runtime.Log;
 
@@ -27,6 +29,8 @@ public class AppController implements Initializable {
     private TableColumn statusCol;
     @FXML
     private TableColumn timeCol;
+    @FXML
+    private TextField username;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -52,5 +56,12 @@ public class AppController implements Initializable {
         }
 
         return logEntries;
+    }
+
+    public void search() {
+        List<LogEntry> logData = getLogData();
+        logData.removeIf(element -> ! element.getUsername().equals(username.getText()));
+
+        logTable.setItems(FXCollections.observableArrayList(logData));
     }
 }
